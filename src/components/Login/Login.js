@@ -4,10 +4,12 @@ import { AiOutlineMail } from "react-icons/ai";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { BiShowAlt } from "react-icons/bi";
 import { Link } from "react-router-dom";
+import SocialLogin from "../SocialLogin/SocialLogin";
 
 const Login = () => {
   const [passwordType, setPasswordType] = useState(true);
   return (
+    <div style={{height:'100vh'}}> 
     <div
       style={{ maxWidth: "600px" }}
       className="mt-5 p-4 mx-auto bg-white shadow"
@@ -65,14 +67,16 @@ const Login = () => {
         <div style={{ height: "50px" }}></div>
         <div className="d-flex justify-content-center">
           <button
-            className="btn btn-dark mx-auto login-button"
-            style={{ width: "200px" }}
+            className="btn btn-dark mx-auto login-button fs-5"
+            style={{ width: "250px" }}
           >
             Submit
           </button>
         </div>
       </form>
+      <SocialLogin></SocialLogin>
     </div>
+    </div> 
   );
 };
 

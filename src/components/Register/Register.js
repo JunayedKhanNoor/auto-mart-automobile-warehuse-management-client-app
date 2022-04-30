@@ -4,6 +4,7 @@ import { AiOutlineMail } from "react-icons/ai";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { BiShowAlt } from "react-icons/bi";
 import { Link } from 'react-router-dom';
+import SocialLogin from '../SocialLogin/SocialLogin';
 
 const Register = () => {
     const [passwordType, setPasswordType] = useState(true);
@@ -105,7 +106,7 @@ const Register = () => {
                 id="gridCheck"
                 onClick={() => setAccept(!accept)}
               />
-              <label className="form-check-label fw-light" for="gridCheck">
+              <label className="form-check-label fw-light" htmlFor="gridCheck">
                 <small className={!accept && "text-danger"}>
                   Accept terms & conditions
                 </small>
@@ -117,13 +118,14 @@ const Register = () => {
           <div className="d-flex justify-content center">
             <button
               disabled={!accept}
-              className="btn btn-dark mx-auto v"
-              style={{ width: "200px" }}
+              className="btn btn-dark mx-auto fs-5"
+              style={{ width: "250px" }}
             >
               Submit
             </button>
           </div>
         </form>
+        <SocialLogin></SocialLogin>
       </div>
     );
 };
