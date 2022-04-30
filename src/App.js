@@ -14,7 +14,7 @@ import Blogs from "./components/Blogs/Blogs"
 
 function App() {
   return (
-    <div className="bg-light">
+    <div className="bg-light" style={{height:'100vh'}}>
       <Header></Header>
       <Routes>
         <Route path="/" element={<Home></Home>}></Route>

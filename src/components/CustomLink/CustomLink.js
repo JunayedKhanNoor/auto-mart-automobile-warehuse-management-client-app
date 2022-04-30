@@ -14,7 +14,7 @@ const CustomLink = ({ children, to, ...props }) => {
             textDecorationColor: match && "#E78EA9",
             fontSize:"20px",
             fontWeight:'bold',
-            color:"#0275d8",
+            color:"#2962ff",
             marginRight:"20px",
             textDecorationThickness:"3px"
         }}
