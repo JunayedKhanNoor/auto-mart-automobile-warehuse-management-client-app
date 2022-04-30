@@ -12,6 +12,7 @@ import ManageItems from "./components/ManageItems/ManageItems";
 import AddItems from "./components/AddItems/AddItems";
 import Blogs from "./components/Blogs/Blogs";
 import RequiredAuth from "./components/RequiredAuth/RequiredAuth";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
@@ -36,17 +37,12 @@ function App() {
           element={<ManageItems></ManageItems>}
         ></Route>
         <Route path="/addItems" element={<AddItems></AddItems>}></Route>
-        <Route
-          path="/blogs"
-          element={
-            <RequiredAuth>
-              <Blogs></Blogs>
-            </RequiredAuth>
-          }
-        ></Route>
+        <Route path="/blogs" element={
+        <RequiredAuth><Blogs></Blogs></RequiredAuth>}></Route>
         <Route path="*" element={<NotFound></NotFound>}></Route>
       </Routes>
       <Footer></Footer>
+      <ToastContainer />
     </div>
   );
 }

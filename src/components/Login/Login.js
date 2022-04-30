@@ -70,7 +70,7 @@ const Login = () => {
             className="btn btn-dark mx-auto login-button fs-5"
             style={{ width: "250px" }}
           >
-            Submit
+            Login
           </button>
         </div>
       </form>
