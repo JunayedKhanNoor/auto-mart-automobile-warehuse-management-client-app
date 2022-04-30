@@ -10,22 +10,40 @@ import InventoryDetails from "./components/InventoryDetails/InventoryDetails";
 import MyItems from "./components/MyItems/MyItems";
 import ManageItems from "./components/ManageItems/ManageItems";
 import AddItems from "./components/AddItems/AddItems";
-import Blogs from "./components/Blogs/Blogs"
+import Blogs from "./components/Blogs/Blogs";
+import RequiredAuth from "./components/RequiredAuth/RequiredAuth";
 
 function App() {
   return (
-    <div className="bg-light" style={{height:'100vh'}}>
+    <div className="bg-light" style={{ height: "100vh" }}>
       <Header></Header>
       <Routes>
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="/home" element={<Home></Home>}></Route>
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/register" element={<Register></Register>}></Route>
-        <Route path="/inventory/:ID" element={<InventoryDetails></InventoryDetails>}></Route>
+        <Route
+          path="/inventory/:ID"
+          element={
+            <RequiredAuth>
+              <InventoryDetails></InventoryDetails>
+            </RequiredAuth>
+          }
+        ></Route>
         <Route path="/myItems" element={<MyItems></MyItems>}></Route>
-        <Route path="/manageItems" element={<ManageItems></ManageItems>}></Route>
+        <Route
+          path="/manageItems"
+          element={<ManageItems></ManageItems>}
+        ></Route>
         <Route path="/addItems" element={<AddItems></AddItems>}></Route>
-        <Route path="/blogs" element={<Blogs></Blogs>}></Route>
+        <Route
+          path="/blogs"
+          element={
+            <RequiredAuth>
+              <Blogs></Blogs>
+            </RequiredAuth>
+          }
+        ></Route>
         <Route path="*" element={<NotFound></NotFound>}></Route>
       </Routes>
       <Footer></Footer>
