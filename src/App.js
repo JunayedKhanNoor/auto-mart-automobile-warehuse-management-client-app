@@ -17,7 +17,7 @@ import Inventories from "./components/Inventories/Inventories"
 
 function App() {
   return (
-    <div className="bg-light" style={{ height: "100vh" }}>
+    <div className="bg-light m-0">
       <Header></Header>
       <Routes>
         <Route path="/" element={<Home></Home>}></Route>
@@ -26,7 +26,7 @@ function App() {
         <Route path="/register" element={<Register></Register>}></Route>
         <Route path="/inventory" element={<Inventories></Inventories>}></Route>
         <Route
-          path="/inventory/:ID"
+          path="/inventory/:id"
           element={
             <RequiredAuth>
               <InventoryDetails></InventoryDetails>

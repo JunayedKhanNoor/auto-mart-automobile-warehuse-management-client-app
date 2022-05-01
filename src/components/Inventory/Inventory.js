@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import "./Inventory.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { useNavigate } from "react-router-dom";
 
 const Inventory = ({ vehicle }) => {
     useEffect(() => {
@@ -11,6 +12,10 @@ const Inventory = ({ vehicle }) => {
       }, []);
   const { img, name, description, supplierName, price, quantity, _id } =
     vehicle;
+    const navigate = useNavigate();
+    const navigateToDetail = (id) =>{
+      navigate(`/inventory/${id}`);
+    }
   return (
     <div>
       <div className="card h-100" style={{borderRadius:'20px'}} data-aos="fade-up">
@@ -22,7 +27,7 @@ const Inventory = ({ vehicle }) => {
           <h4>Total stock:{quantity}</h4>
           <small className="text-muted">Seller:{supplierName}</small>
         </div>
-        <button className="update-button">Update Inventory</button>
+        <button className="update-button" onClick={()=>{navigateToDetail(_id)}}>Update Inventory</button>
       </div>
     </div>
   );

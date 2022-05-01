@@ -6,7 +6,7 @@ const Home = () => {
   return (
     <div>
       <Banner></Banner> 
-      <h1 className="text-center mt-5 mb-5">
+      <h1 className="text-center mt-5 mb-5" data-aos="fade-up">
         Latest{" "}
         <span className="fw-bold" style={{ color: "#FF2626" }}>
           {" "}
