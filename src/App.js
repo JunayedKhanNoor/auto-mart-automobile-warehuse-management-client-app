@@ -13,6 +13,7 @@ import AddItems from "./components/AddItems/AddItems";
 import Blogs from "./components/Blogs/Blogs";
 import RequiredAuth from "./components/RequiredAuth/RequiredAuth";
 import { ToastContainer } from "react-toastify";
+import Inventories from "./components/Inventories/Inventories"
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/home" element={<Home></Home>}></Route>
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/register" element={<Register></Register>}></Route>
+        <Route path="/inventory" element={<Inventories></Inventories>}></Route>
         <Route
           path="/inventory/:ID"
           element={

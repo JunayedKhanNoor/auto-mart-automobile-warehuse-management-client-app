@@ -2,14 +2,16 @@ import { signOut } from "firebase/auth";
 import React from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
 import CustomLink from "../CustomLink/CustomLink";
 
 const Header = () => {
   const [user, loading, error] = useAuthState(auth);
+  const navigate = useNavigate()
   const logout = () => {
     signOut(auth);
+    navigate("/");
   };
   return (
     <Navbar className="shadow-lg" collapseOnSelect expand="lg" bg="white">
@@ -26,6 +28,7 @@ const Header = () => {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ms-auto">
+            <CustomLink to='/'>Home</CustomLink>
             <CustomLink to="/blogs">Blogs</CustomLink>
             {user ?
             <>
