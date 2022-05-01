@@ -1,0 +1,17 @@
+.update-button {
+  background-color: #171717;
+  border: none;
+  border-radius: 8px;
+  padding-top: 8px;
+  padding-bottom: 5px;
+  color: #fff;
+  width: 50%;
+  margin: 0 auto 10px auto;
+}
+.update-button:hover{
+    background-color: #88E1F2;
+}
+.image:hover{
+    transform: scale(.97) !important;
+    transition: transform 1s;
+}

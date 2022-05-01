@@ -1,4 +1,5 @@
 import React from "react";
+import Inventories from "../Inventories/Inventories";
 
 const Home = () => {
   return (
@@ -15,7 +16,7 @@ const Home = () => {
       <h2 className="text-center mt-5 mb-5">
         <span style={{ color: "#FF2626" }}>Inventories </span> & Here you go!!
       </h2>
-      
+      <Inventories></Inventories>
     </div>
   );
 };
