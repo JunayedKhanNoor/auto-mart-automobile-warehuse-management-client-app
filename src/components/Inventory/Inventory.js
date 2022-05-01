@@ -13,7 +13,7 @@ const Inventory = ({ vehicle }) => {
     vehicle;
   return (
     <div>
-      <div className="card h-100" style={{borderRadius:'20px'}} data-aos="zoom-out">
+      <div className="card h-100" style={{borderRadius:'20px'}} data-aos="fade-up">
         <img src={img} className="card-img-top image" style={{height:'400px',objectFit:'cover',borderTopLeftRadius:'20px',borderTopRightRadius:'20px'}} alt="..." />
         <div className="card-body">
           <h2 className="card-title fw-bold">{name}</h2>

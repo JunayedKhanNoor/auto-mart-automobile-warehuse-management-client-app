@@ -1,9 +1,11 @@
 import React from "react";
+import Banner from "../Banner/Banner";
 import Inventories from "../Inventories/Inventories";
 
 const Home = () => {
   return (
     <div>
+      <Banner></Banner> 
       <h1 className="text-center mt-5 mb-5">
         Latest{" "}
         <span className="fw-bold" style={{ color: "#FF2626" }}>
