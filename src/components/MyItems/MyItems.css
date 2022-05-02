@@ -1,0 +1,10 @@
+.item-container{
+    max-width: 800px;
+    justify-content: space-between;
+    border: 5px solid #a8a29e;
+    border-radius: 40px;
+    align-items: center;
+}
+.item-container:hover{
+    border: 5px solid #fca5a5;
+}
