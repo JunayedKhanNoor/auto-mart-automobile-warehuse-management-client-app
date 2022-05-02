@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaUserCircle } from "react-icons/fa";
 import { AiOutlineMail } from "react-icons/ai";
 import { RiLockPasswordLine } from "react-icons/ri";
@@ -10,12 +10,14 @@ import auth from "../../firebase.init";
 import Loading from "../Loading/Loading";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import useToken from "../../hooks/useToken";
 
 const Register = () => {
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
   const [updateProfile, updating, updateError] = useUpdateProfile(auth);
   const [passwordType, setPasswordType] = useState(true);
+  const [token] = useToken(user);
   const [accept, setAccept] = useState(true);
   const [myError, setMyError] = useState("");
   const navigate = useNavigate();
@@ -38,11 +40,16 @@ const Register = () => {
       await createUserWithEmailAndPassword(email,password);
       await updateProfile({displayName:name});
       toast('Profile Updated');
-      navigate('/');
     }
   };
+  useEffect(() => {
+    if (token) {
+       navigate("/home"); 
+      
+    }
+  }, [token, navigate]); 
   if (loading || updating) {
-      return <Loading></Loading>
+      return <Loading></Loading>;
   }
   return (
     <div

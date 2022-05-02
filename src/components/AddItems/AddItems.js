@@ -19,10 +19,9 @@ const AddItems = () => {
     })
     .then(res=>res.json())
     .then(result=>{
-      console.log(result);
       toast('Your item added to store');
     }) 
-    //e.target.reset();
+    e.target.reset();
   }; 
   return (
     <div>

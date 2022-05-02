@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./Login.css";
 import { AiOutlineMail } from "react-icons/ai";
 import { RiLockPasswordLine } from "react-icons/ri";
@@ -13,6 +13,7 @@ import auth from "../../firebase.init";
 import Loading from "../Loading/Loading";
 import { toast } from "react-toastify";
 import axios from "axios";
+import useToken from "../../hooks/useToken";
 
 const Login = () => {
   const [passwordType, setPasswordType] = useState(true);
@@ -20,6 +21,7 @@ const Login = () => {
     useSignInWithEmailAndPassword(auth);
   const [sendPasswordResetEmail, sending, errorReset] =
     useSendPasswordResetEmail(auth);
+  const [token] = useToken(user);
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
@@ -27,7 +29,7 @@ const Login = () => {
   const passwordRef = useRef("");
   let errorElement;
   if (error) {
-    errorElement = <small className="text-danger">{error.message}</small>
+    errorElement = <small className="text-danger">{error.message}</small>;
   }
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -35,20 +37,21 @@ const Login = () => {
     const password = passwordRef.current.value;
     console.log(email, password);
     await signInWithEmailAndPassword(email, password);
-    const {data} = await axios.post('http://localhost:5000/login',{email});
-    console.log(data);
-    localStorage.setItem('accessToken', data.accessToken)
-    navigate(from, { replace: true });
   };
-  const resetPassword = async(e) =>{
+  const resetPassword = async (e) => {
     const email = emailRef.current.value;
     if (email) {
       await sendPasswordResetEmail(email);
-      toast('Sent email')
-    }else{
-      toast('Please give your email');
+      toast("Sent email");
+    } else {
+      toast("Please give your email");
     }
-  }
+  };
+  useEffect(() => {
+    if (token) {
+      navigate(from, { replace: true });
+    }
+  }, [from, token, navigate]);
   if (loading || sending) {
     return <Loading></Loading>;
   }
@@ -104,16 +107,23 @@ const Login = () => {
             ></BiShowAlt>
           </div>
           <div className="form-check d-flex justify-content-between">
-            <p>Forgot Password? <span onClick={resetPassword} className="text-primary text-decoration-underline" role="button">Reset password</span></p>
+            <p>
+              Forgot Password?{" "}
+              <span
+                onClick={resetPassword}
+                className="text-primary text-decoration-underline"
+                role="button"
+              >
+                Reset password
+              </span>
+            </p>
             <p className="text-primary" role="button">
               <Link to="/register" style={{ textDecoration: "none" }}>
                 New to Auto Mart?
               </Link>
             </p>
           </div>
-          <div style={{ height: "50px" }}>
-            {errorElement}
-          </div>
+          <div style={{ height: "50px" }}>{errorElement}</div>
           <div className="d-flex justify-content-center">
             <button
               className="btn btn-dark mx-auto login-button fs-5"
