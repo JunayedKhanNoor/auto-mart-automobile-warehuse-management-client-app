@@ -8,3 +8,13 @@
 .manage-btn:hover{
     border: 3px solid #14532d;
 }
+@media only screen and (max-width: 576px) {
+    .company-logo{
+        height: 40px !important;
+        width: 40px !important;
+    }
+    .detail{
+        text-align: center !important;
+        padding: 10px 20px;
+    }
+}
