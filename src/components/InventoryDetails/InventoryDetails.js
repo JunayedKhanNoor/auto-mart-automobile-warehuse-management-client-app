@@ -12,43 +12,44 @@ const InventoryDetails = () => {
     e.preventDefault();
     const { quantity, ...rest } = inventory;
     const updatedInventory = { quantity: parseInt(quantity) - 1, ...rest };
-    
-    fetch(url,{
-        method: 'PUT',
-        headers:{
-            'Content-Type': 'application/json',
+    if (parseInt(quantity) > 0) {
+      fetch(url, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(updatedInventory),
-    })
-    .then(response=>response.json())
-    .then(data=>{
-        toast('Delivered')
-    })
-    setInventory(updatedInventory);
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          toast("Delivered");
+        });
+      setInventory(updatedInventory);
+    }
   };
   const handleRestock = (e) => {
     e.preventDefault();
     const reStock = e.target.stock.value;
     const { quantity, ...rest } = inventory;
     if (reStock) {
-        const updatedInventory = {
-            quantity: parseInt(quantity) + Number(reStock),
-            ...rest,
-          };
-          fetch(url,{
-              method:'PUT',
-              headers:{
-                  'Content-Type': 'application/json',
-              },
-              body: JSON.stringify(updatedInventory)
-          })
-          .then(response=>response.json())
-          .then(data=>{
-              console.log(data);
-              toast('Your Stock updated')
-          })
-          setInventory(updatedInventory);
-          e.target.reset();
+      const updatedInventory = {
+        quantity: parseInt(quantity) + Number(reStock),
+        ...rest,
+      };
+      fetch(url, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatedInventory),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          toast("Your Stock updated");
+        });
+      setInventory(updatedInventory);
+      e.target.reset();
     }
   };
   return (

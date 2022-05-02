@@ -13,7 +13,7 @@ import AddItems from "./components/AddItems/AddItems";
 import Blogs from "./components/Blogs/Blogs";
 import RequiredAuth from "./components/RequiredAuth/RequiredAuth";
 import { ToastContainer } from "react-toastify";
-import Inventories from "./components/Inventories/Inventories"
+import Inventories from "./components/Inventories/Inventories";
 
 function App() {
   return (
@@ -36,11 +36,14 @@ function App() {
         <Route path="/myItems" element={<MyItems></MyItems>}></Route>
         <Route
           path="/manageItems"
-          element={<ManageItems></ManageItems>}
+          element={
+            <RequiredAuth>
+              <ManageItems></ManageItems>
+            </RequiredAuth>
+          }
         ></Route>
         <Route path="/addItems" element={<AddItems></AddItems>}></Route>
-        <Route path="/blogs" element={
-        <RequiredAuth><Blogs></Blogs></RequiredAuth>}></Route>
+        <Route path="/blogs" element={<Blogs></Blogs>}></Route>
         <Route path="*" element={<NotFound></NotFound>}></Route>
       </Routes>
       <Footer></Footer>

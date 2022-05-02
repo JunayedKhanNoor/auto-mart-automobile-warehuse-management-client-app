@@ -1,8 +1,11 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import Banner from "../Banner/Banner";
 import Inventories from "../Inventories/Inventories";
+import './Home.css'
 
 const Home = () => {
+  const navigate = useNavigate();
   return (
     <div>
       <Banner></Banner> 
@@ -19,6 +22,9 @@ const Home = () => {
         <span style={{ color: "#FF2626" }}>Inventories </span> & Here you go!!
       </h2>
       <Inventories></Inventories>
+      <div className="d-flex justify-content-center my-5">
+        <button className="btn p-3 manage-btn" onClick={()=>{navigate('/manageItems')}}>Manage Inventories</button>
+      </div>
     </div>
   );
 };

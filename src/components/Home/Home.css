@@ -1,0 +1,10 @@
+.manage-btn{
+    background-color: #4ade80;
+    width: 250px;
+    border-radius: 30px;
+    color: aliceblue;
+    font-size:x-large;
+}
+.manage-btn:hover{
+    border: 3px solid #14532d;
+}
