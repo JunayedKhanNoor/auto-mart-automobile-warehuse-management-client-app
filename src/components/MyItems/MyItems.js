@@ -65,7 +65,7 @@ const MyItems = () => {
   }
 
   return (
-    <div>
+    <div style={{minHeight:'100vh'}}>
       <h1 className="text-center my-5 text-primary fw-bold">
         Oh Helle, these are your Items...
       </h1>
