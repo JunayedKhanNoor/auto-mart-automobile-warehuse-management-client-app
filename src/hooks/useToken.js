@@ -8,7 +8,7 @@ const useToken = (user) => {
     const getToken = async () => {
       const email = user?.email;
       if (email) {
-        const { data } = await axios.post("http://localhost:5000/login", {
+        const { data } = await axios.post("https://morning-ridge-10289.herokuapp.com/login", {
           email,
         });
         setToken(data.accessToken);
@@ -23,7 +23,7 @@ const useToken = (user) => {
       const email = user?.user?.email;
       if (email) {
         const { data } = await axios.post(
-          "http://localhost:5000/login",
+          "https://morning-ridge-10289.herokuapp.com/login",
           { email }
         );
         setToken(data.accessToken);

@@ -9,7 +9,7 @@ const AddItems = () => {
   const { register, handleSubmit } = useForm();
   const onSubmit = (data,e) => {
     console.log(data);
-    const url = `http://localhost:5000/vehicle`;
+    const url = `https://morning-ridge-10289.herokuapp.com/vehicle`;
     fetch(url,{
       method: "POST",
       headers:{

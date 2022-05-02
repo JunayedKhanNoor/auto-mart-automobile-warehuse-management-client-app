@@ -7,7 +7,7 @@ import "./InventoryDetails.css";
 const InventoryDetails = () => {
   const { id } = useParams();
   const [inventory, setInventory] = useInventoryDetail(id);
-  const url = `http://localhost:5000/inventory/${id}`;
+  const url = `https://morning-ridge-10289.herokuapp.com/inventory/${id}`;
   const handleDelivered = (e) => {
     e.preventDefault();
     const { quantity, ...rest } = inventory;

@@ -11,7 +11,7 @@ const ManageItems = () => {
   const [pageSize,setPageSize] = useState(10);
   const [inventories, setInventories] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/inventoryCount")
+    fetch("https://morning-ridge-10289.herokuapp.com/inventoryCount")
       .then((res) => res.json())
       .then((data) => {
         const page = Math.ceil(data.count / pageSize);
@@ -20,7 +20,7 @@ const ManageItems = () => {
       });
   }, [pageCount,pageSize]);
   useEffect(()=>{
-      fetch(`http://localhost:5000/inventoriesPage?page=${page}&size=${pageSize}`)
+      fetch(`https://morning-ridge-10289.herokuapp.com/inventoriesPage?page=${page}&size=${pageSize}`)
       .then(res=>res.json())
       .then(data=>{
         setInventories(data)
@@ -42,7 +42,7 @@ const ManageItems = () => {
   };
   const handleModal = () => {
     console.log(ID);
-    const url = `http://localhost:5000/inventory/${ID}`;
+    const url = `https://morning-ridge-10289.herokuapp.com/inventory/${ID}`;
     fetch(url, {
       method: "DELETE",
     })

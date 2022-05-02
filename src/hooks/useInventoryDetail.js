@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 const useInventoryDetail = (id) => {
   const [inventory, setInventory] = useState({});
   useEffect(() => {
-    const url = `http://localhost:5000/inventory/${id}`;
+    const url = `https://morning-ridge-10289.herokuapp.com/inventory/${id}`;
     fetch(url)
     .then(res=>res.json())
     .then(data=> setInventory(data))

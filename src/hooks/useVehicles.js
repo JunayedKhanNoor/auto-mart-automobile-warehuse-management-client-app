@@ -6,9 +6,9 @@ const useVehicles =(query)=>{
     useEffect(()=>{
         let url;
         if (query) {
-           url =`http://localhost:5000/vehicle?size=${query}`; 
+           url =`https://morning-ridge-10289.herokuapp.com/vehicle?size=${query}`; 
         }else{
-            url = `http://localhost:5000/vehicle`
+            url = `https://morning-ridge-10289.herokuapp.com/vehicle`
         }
         fetch(url)
         .then(res=>res.json())
