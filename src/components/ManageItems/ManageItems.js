@@ -48,7 +48,6 @@ const ManageItems = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         const remaining = vehicles.filter((vehicle) => vehicle._id !== ID);
         setVehicles(remaining);
         const remainingPagination = inventories.filter((vehicle2) => vehicle2._id !== ID);

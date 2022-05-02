@@ -7,6 +7,7 @@ import "./MyItems.css";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { signOut } from "firebase/auth";
 import Loading from "../Loading/Loading";
+import { Button, Modal } from "react-bootstrap";
 
 const MyItems = () => {
   const [user, loading] = useAuthState(auth);
@@ -17,24 +18,48 @@ const MyItems = () => {
       const email = user?.email;
       const url = `http://localhost:5000/myItems?email=${email}`;
       if (email) {
-        try {  
-            const { data } = await axios.get(url, {
-              headers: {
-                authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-              },
-            });
-            setMyItems(data);
-          } catch (error) {
-            console.log(error.message);
-            if (error.response.status === 403 || error.response.status === 401) {
-              signOut(auth);
-              navigate("/login");
-            }
+        try {
+          const { data } = await axios.get(url, {
+            headers: {
+              authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+            },
+          });
+          setMyItems(data);
+        } catch (error) {
+          console.log(error.message);
+          if (error.response.status === 403 || error.response.status === 401) {
+            signOut(auth);
+            navigate("/login");
           }
-        };
+        }
       }
-      getOrders();
+    };
+    getOrders();
   }, [user, navigate]);
+  let [ID, setID] = useState("");
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = (id) => {
+    setShow(true);
+    setID(id);
+  };
+  const handleModal = () => {
+    console.log(ID);
+    const url = `http://localhost:5000/inventory/${ID}`;
+    fetch(url, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        const remaining = myItems.filter((vehicle) => vehicle._id !== ID);
+        setMyItems(remaining);
+        /* const remainingPagination = inventories.filter((vehicle2) => vehicle2._id !== ID);
+        setInventories(remainingPagination); */
+      });
+    handleClose();
+    return;
+  };
   if (loading) {
     return <Loading></Loading>;
   }
@@ -60,13 +85,32 @@ const MyItems = () => {
             />
             <h3>{item?.name}</h3>
             <h4>Price: $ {item?.price}</h4>
-            <button className="btn btn-danger rounded-pill p-2">
+            <button
+              className="btn btn-danger rounded-pill p-2"
+              onClick={() => {
+                handleShow(item._id);
+              }}
+            >
               <RiDeleteBin6Line className="text-white me-2"></RiDeleteBin6Line>{" "}
               Delete
             </button>
           </div>
         ))}
       </div>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Delete Confirmation</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Are you sure, to delete from store?</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Cancel
+          </Button>
+          <Button variant="danger" onClick={handleModal}>
+            Confirm Delete
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 };
