@@ -5,9 +5,13 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
 
 const ManageItems = () => {
+  let [ID,setID]  = useState();  
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleShow = (id) => {
+      setShow(true);
+      setID(id)
+    };
   const navigate = useNavigate();
   const [vehicles, setVehicles] = useVehicles();
   let no = 0;
@@ -16,7 +20,17 @@ const ManageItems = () => {
     return no;
   };
   const handleModal = () => {
-      
+    console.log(ID);
+    const url = `http://localhost:5000/inventory/${ID}`;
+      fetch(url, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          const remaining = vehicles.filter((vehicle) => vehicle._id !== ID);
+          setVehicles(remaining);
+        });  
     handleClose();
     return 
   };
@@ -41,7 +55,7 @@ const ManageItems = () => {
               <td>{vehicle.supplierName}</td>
               <td>{vehicle.quantity}</td>
               <td
-                onClick={handleShow}
+                onClick={()=>{handleShow(vehicle._id)}}
                 className="ps-3 pt-1 col-2"
                 role="button"
               >

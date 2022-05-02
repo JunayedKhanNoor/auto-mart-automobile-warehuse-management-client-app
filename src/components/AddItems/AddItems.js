@@ -22,7 +22,7 @@ const AddItems = () => {
       console.log(result);
       toast('Your item added to store');
     }) 
-    e.target.reset();
+    //e.target.reset();
   }; 
   return (
     <div>
