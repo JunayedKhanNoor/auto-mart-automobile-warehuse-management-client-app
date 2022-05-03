@@ -36,7 +36,7 @@ const Header = () => {
             <CustomLink to="/manageItems">Manage Vehicles</CustomLink>
             <CustomLink to="/addItems">Add Vehicle</CustomLink>
             <button
-              style={{ letterSpacing: "2px",background:"#2962ff",width:"87px",borderRadius:'20px'}}
+              style={{ letterSpacing: "2px",background:"#2962ff",width:"150px",borderRadius:'20px'}}
               className="btn text-white"
               onClick={logout}
             >

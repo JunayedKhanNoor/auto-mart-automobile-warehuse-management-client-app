@@ -31,6 +31,17 @@
     font-size: 3em;
     font-weight: bold;
 }
+.img-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.review-img{
+    height:200px;
+    width: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+}
 @media only screen and (max-width: 576px) {
     .company-logo{
         height: 40px !important;
