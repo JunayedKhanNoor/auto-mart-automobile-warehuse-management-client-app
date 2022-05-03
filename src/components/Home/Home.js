@@ -15,9 +15,14 @@ import { EffectCards } from "swiper";
 import review1 from "../../Images/r1.jpg";
 import review2 from "../../Images/r2.jpg";
 import review3 from "../../Images/r3.jpg";
+import Loading from "../Loading/Loading";
 
 const Home = () => {
   const navigate = useNavigate();
+  if (document.readyState === "loading") {
+    console.log('Loading');
+   return <Loading></Loading>
+  }
   return (
     <div>
       <Banner></Banner>
