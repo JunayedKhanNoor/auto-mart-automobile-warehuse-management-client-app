@@ -7,3 +7,8 @@
     background-color: dodgerblue;
     color: #fff;
   }
+  @media only screen and (max-width:576px) {
+    .supplier{
+      display: none !important;
+    }
+  }

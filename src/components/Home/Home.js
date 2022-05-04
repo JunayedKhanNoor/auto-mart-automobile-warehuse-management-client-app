@@ -16,11 +16,13 @@ import review1 from "../../Images/r1.jpg";
 import review2 from "../../Images/r2.jpg";
 import review3 from "../../Images/r3.jpg";
 import Loading from "../Loading/Loading";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../firebase.init";
 
 const Home = () => {
+  const [user, loading] = useAuthState(auth);
   const navigate = useNavigate();
-  if (document.readyState === "loading") {
-    console.log("Loading");
+  if (loading) {
     return <Loading></Loading>;
   }
   return (

@@ -14,9 +14,6 @@ const Header = () => {
     signOut(auth);
     navigate("/");
   };
-  if (loading) {
-    return <Loading></Loading>;
-  }
   return (
     <Navbar className="shadow-lg" collapseOnSelect expand="lg" bg="white">
       <Container>
