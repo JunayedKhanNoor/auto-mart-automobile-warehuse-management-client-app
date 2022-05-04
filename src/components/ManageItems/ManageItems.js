@@ -72,7 +72,7 @@ const ManageItems = () => {
           <tr>
             <th>No</th>
             <th>Product Name</th>
-            <th>Supplier Name</th>
+            <th className="supplier">Supplier Name</th>
             <th>Product in stock</th>
             <th>Stock Update</th>
             <th>Remove from stock</th>
