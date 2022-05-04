@@ -20,8 +20,8 @@ import Loading from "../Loading/Loading";
 const Home = () => {
   const navigate = useNavigate();
   if (document.readyState === "loading") {
-    console.log('Loading');
-   return <Loading></Loading>
+    console.log("Loading");
+    return <Loading></Loading>;
   }
   return (
     <div>

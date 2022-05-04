@@ -1,0 +1,9 @@
+.error-container{
+    height: 800px;
+    width: 100%;
+    background-image: url('../../Images/error.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    backdrop-filter: inherit;
+}
