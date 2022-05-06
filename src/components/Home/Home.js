@@ -117,6 +117,7 @@ const Home = () => {
           style={{ width: "50px", height: "2px" }}
         ></div>
       </div>
+      <div className="overflow-hidden">
       <Swiper
         effect={"cards"}
         grabCursor={true}
@@ -169,6 +170,7 @@ const Home = () => {
           </div>
         </SwiperSlide>
       </Swiper>
+      </div>
     </div>
   );
 };

@@ -1,0 +1,8 @@
+.f-list{
+    font-style: normal;
+    font-weight: 800;
+}
+.f-list li:hover{
+    color: aquamarine;
+    cursor: pointer;
+}
