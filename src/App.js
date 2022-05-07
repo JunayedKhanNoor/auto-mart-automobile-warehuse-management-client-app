@@ -14,6 +14,7 @@ import Blogs from "./components/Blogs/Blogs";
 import RequiredAuth from "./components/RequiredAuth/RequiredAuth";
 import { ToastContainer } from "react-toastify";
 import Inventories from "./components/Inventories/Inventories";
+import WhyAutoMart from "./components/WhyAutoMart/WhyAutoMart";
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
         ></Route>
         <Route path="/addItems" element={<AddItems></AddItems>}></Route>
         <Route path="/blogs" element={<Blogs></Blogs>}></Route>
+        <Route path="/whyAutoMart" element={<WhyAutoMart></WhyAutoMart>}></Route>
         <Route path="*" element={<NotFound></NotFound>}></Route>
       </Routes>
       <Footer></Footer> 

@@ -31,6 +31,8 @@ const Header = () => {
           <Nav className="ms-auto">
             <CustomLink to='/'>Home</CustomLink>
             <CustomLink to="/blogs">Blogs</CustomLink>
+            <CustomLink to="/whyAutoMart">Why Auto Mart</CustomLink>
+
             {user ?
             <>
             <CustomLink to="/myItems">My Items</CustomLink>
