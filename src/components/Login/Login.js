@@ -59,7 +59,7 @@ const Login = () => {
     <div style={{ height: "100vh" }}>
       <div
         style={{ maxWidth: "600px" }}
-        className="mt-5 p-4 mx-auto bg-white shadow"
+        className="mt-5 p-4 mx-auto bg-white shadow logIn-container"
       >
         <h1 className="text-center my-5">Please Login</h1>
         <form onSubmit={handleLogin}>
@@ -107,7 +107,7 @@ const Login = () => {
             ></BiShowAlt>
           </div>
           <div className="form-check d-flex justify-content-between">
-            <p>
+            <p className="login-text">
               Forgot Password?{" "}
               <span
                 onClick={resetPassword}
@@ -117,7 +117,7 @@ const Login = () => {
                 Reset password
               </span>
             </p>
-            <p className="text-primary" role="button">
+            <p className="text-primary login-text" role="button">
               <Link to="/register" style={{ textDecoration: "none" }}>
                 New to Auto Mart?
               </Link>
