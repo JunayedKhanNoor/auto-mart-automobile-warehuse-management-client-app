@@ -3,6 +3,7 @@ import "aos/dist/aos.css";
 import React, { useEffect } from "react";
 import about2 from "../../Images/about2.jpg";
 import search from "../../Images/search-car.gif";
+import { MdContactPhone } from "react-icons/md";
 
 const WhyAutoMart = () => {
   useEffect(() => {
@@ -36,7 +37,7 @@ const WhyAutoMart = () => {
             src={search}
             alt=""
           />
-          <h4 style={{ color: "#11468F" }} data-aos="fade-up">
+          <h4 className="text-center" style={{ color: "#11468F" }} data-aos="fade-up">
             The most flexible car-buying experience ever
           </h4>
         </div>
@@ -67,11 +68,23 @@ const WhyAutoMart = () => {
         </div>
       </div>
       <div className="text-center">
-      <h3 style={{ color: "#11468F" }}>Contact Us</h3>
-      <div className="mx-auto p-5" style={{maxWidth:'800px',border:'1px solid #11468F'}}>
-         <h4 style={{ color: "#11468F" }}>Want to talk to someone over the phone? Give us a call:</h4>
-         <h1 style={{ color: "#11468F" }}>(913) 384-6697000</h1> 
-      </div>
+        <h3 style={{ color: "#11468F" }}>Contact Us</h3>
+        <div
+          className="mx-auto p-5 d-md-flex align-items-center justify-content-around"
+          style={{ maxWidth: "900px", border: "1px solid #11468F" }}
+        >
+          <div>
+            <MdContactPhone
+              style={{ color: "#11468F", height: "100px", width: "100px" }}
+            ></MdContactPhone>
+          </div>
+          <div>
+            <h4 style={{ color: "#11468F" }}>
+              Want to talk to someone over the phone? Give us a call:
+            </h4>
+            <h1 style={{ color: "#11468F" }}>(913) 384-6697000</h1>
+          </div>
+        </div>
       </div>
     </div>
   );
