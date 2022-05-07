@@ -9,7 +9,7 @@ import Loading from "../Loading/Loading";
 
 const Header = () => {
   const [user, loading, error] = useAuthState(auth);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const logout = () => {
     signOut(auth);
     navigate("/");
@@ -29,28 +29,33 @@ const Header = () => {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ms-auto">
-            <CustomLink to='/'>Home</CustomLink>
+            <CustomLink to="/">Home</CustomLink>
+            {user && (
+              <>
+                <CustomLink to="/myItems">My Items</CustomLink>
+                <CustomLink to="/manageItems">Manage Vehicles</CustomLink>
+                <CustomLink to="/addItems">Add Vehicle</CustomLink>
+              </>
+            )}
+
             <CustomLink to="/blogs">Blogs</CustomLink>
             <CustomLink to="/whyAutoMart">Why Auto Mart</CustomLink>
-
-            {user ?
-            <>
-            <CustomLink to="/myItems">My Items</CustomLink>
-            <CustomLink to="/manageItems">Manage Vehicles</CustomLink>
-            <CustomLink to="/addItems">Add Vehicle</CustomLink>
-            <button
-              style={{ letterSpacing: "2px",background:"#2962ff",width:"110px",borderRadius:'20px'}}
-              className="btn text-white"
-              onClick={logout}
-            >
-              Sign out
-            </button>
-            </>
-            :
-            <CustomLink to="/login">Login</CustomLink>
-            }
-            
-            
+            {user ? (
+              <button
+                style={{
+                  letterSpacing: "2px",
+                  background: "#2962ff",
+                  width: "110px",
+                  borderRadius: "20px",
+                }}
+                className="btn text-white"
+                onClick={logout}
+              >
+                Sign out
+              </button>
+            ) : (
+              <CustomLink to="/login">Login</CustomLink>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Container>
